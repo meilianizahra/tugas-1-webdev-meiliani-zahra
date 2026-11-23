@@ -80,7 +80,9 @@ function validateProduct(body, partial) {
     if (isBlank(title)) errors.push("title is required (string)");
   }
   if (!partial || price !== undefined) {
-    if (typeof price !== "number" || price < 0) errors.push("price is required (number >= 0)");
+    if (typeof price !== "number" || !Number.isFinite(price) || price <= 0) {
+  errors.push("price is required (number > 0)");
+}
   }
   for (const [name, value] of Object.entries({ description, category, image })) {
     if (value !== undefined && typeof value !== "string") errors.push(`${name} must be a string`);

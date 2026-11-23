@@ -24,12 +24,16 @@ body {
 
 /* TODO 1: Atur posisi form login di tengah halaman */
 .login-wrap {
-  /* Isi di sini */
+  min-height: 100;
+  display: ;
+  place-items: center;
+  padding: 20px;
 }
 
 /* TODO 2: Atur ukuran card login */
 .login-card {
-  /* Isi di sini */
+  width: 100%;
+  max-width: 380px;
 }
 
 .field {

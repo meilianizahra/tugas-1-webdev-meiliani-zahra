@@ -17,17 +17,17 @@ export default function LoginPage() {
 
   async function handleSubmit(event) {
     // TODO 1: Cegah halaman melakukan reload
-    ____________;
+    event.preventDefault();
 
     setError("");
     setLoading(true);
 
     try {
       // TODO 2: Panggil fungsi login dengan username dan password
-      const data = _____________________________;
+      const data = await login (username, password);
 
       // TODO 3: Simpan token hasil login ke localStorage
-      localStorage.setItem("token",______________);
+      localStorage.setItem("token", data.token);
 
       localStorage.setItem("username", data.user.username);
       router.push("/products");
@@ -35,7 +35,7 @@ export default function LoginPage() {
       setError(err.message);
     } finally {
       // TODO 4: Matikan status loading
-      ______________________;
+      setLoading(false);
     }
   }
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
         <h1>Login</h1>
         <p className="muted">Pakai akun demo fakestoreapi.</p>
         {/* TODO 5: Tampilkan pesan error jika proses login gagal */}
-      ______________________________________
+      {error && <div className="error">{error}</div>}
 
         <div className="field">
           <label htmlFor="username">Username</label>
